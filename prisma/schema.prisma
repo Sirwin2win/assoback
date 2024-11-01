@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// npx prisma migrate dev --name init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  firstName    String?
+  lastName     String?
+  phone        String?
+  password     String?
+  occupation   String?
+  village      String?
+  role         String?        @default(value: "member")
+  status       String?        @default(value: "active")
+  createdAt    DateTime       @default(now())
+  city         City?          @relation(fields: [cityId], references: [id])
+  cityId       Int?
+  branch       Branch?        @relation(fields: [branchId], references: [id])
+  branchId     Int?
+  Complaint    Complaint[]
+  Contribution Contribution[]
+  Minute       Minute[]
+  Attendance   Attendance[]
+}
+
+model City {
+  id     Int      @id @default(autoincrement())
+  city   String
+  Branch Branch[]
+  User   User[]
+}
+
+model Branch {
+  id           Int            @id @default(autoincrement())
+  branch       String
+  city         City?          @relation(fields: [cityId], references: [id])
+  cityId       Int?
+  User         User[]
+  Complaint    Complaint[]
+  Contribution Contribution[]
+  Minute       Minute[]
+  Attendance   Attendance[]
+}
+
+model Complaint {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  description String?
+  fullName    String?
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      Int?
+  branch      Branch?  @relation(fields: [branchId], references: [id])
+  branchId    Int?
+}
+
+model Minute {
+  id        Int      @id @default(autoincrement())
+  title     String?
+  agenda    String?
+  image     String?
+  fullName  String?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  branchId  Int?
+}
+
+model Contribution {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  description String?
+  image       String?
+  fullName    String?
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      Int?
+  branch      Branch?  @relation(fields: [branchId], references: [id])
+  branchId    Int?
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  status    String?
+  fullName  String?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  branch    Branch?  @relation(fields: [branchId], references: [id])
+  branchId  Int?
+}
+
+// model Blacklist {
+//   id        Int      @id @default(autoincrement())
+//   status    String
+//   createdAt DateTime @default(now())
+//   user      User?    @relation(fields: [userId], references: [id])
+//   userId    Int?
+//   branch    Branch?  @relation(fields: [branchId], references: [id])
+//   branchId  Int?
+// }
