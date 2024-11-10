@@ -18,12 +18,13 @@ const cities_module_1 = require("./cities/cities.module");
 const complaints_module_1 = require("./complaints/complaints.module");
 const contributions_module_1 = require("./contributions/contributions.module");
 const minutes_module_1 = require("./minutes/minutes.module");
+const attendance_module_1 = require("./attendance/attendance.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot(), users_module_1.UsersModule, auth_module_1.AuthModule, branches_module_1.BranchesModule, cities_module_1.CitiesModule, complaints_module_1.ComplaintsModule, contributions_module_1.ContributionsModule, minutes_module_1.MinutesModule,],
+        imports: [config_1.ConfigModule.forRoot(), users_module_1.UsersModule, auth_module_1.AuthModule, branches_module_1.BranchesModule, cities_module_1.CitiesModule, complaints_module_1.ComplaintsModule, contributions_module_1.ContributionsModule, minutes_module_1.MinutesModule, attendance_module_1.AttendanceModule,],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
