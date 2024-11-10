@@ -8,7 +8,7 @@ import { CreateUserDto } from '../users/dto/create-user.dto';
 export class AttendanceService {
     constructor(private prisma: PrismaService) {}
 
-    // Create Branch
+    // Create new Branch
     async  create(createAttendanceDto: CreateAttendanceDto) {
         return this.prisma.attendance.create({
              data: createAttendanceDto
