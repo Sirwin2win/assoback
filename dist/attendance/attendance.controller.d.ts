@@ -4,32 +4,32 @@ export declare class AttendanceController {
     private readonly attendanceService;
     constructor(attendanceService: AttendanceService);
     create(createAttendanceDto: CreateAttendanceDto): Promise<{
-        status: string | null;
-        createdAt: Date;
-        branchId: number | null;
         id: number;
-        userId: number | null;
+        status: string | null;
         fullName: string | null;
+        createdAt: Date;
+        userId: number | null;
+        branchId: number | null;
     }>;
     findMany(id: number): Promise<{
-        status: string | null;
-        createdAt: Date;
-        branchId: number | null;
         id: number;
-        userId: number | null;
+        status: string | null;
         fullName: string | null;
+        createdAt: Date;
+        userId: number | null;
+        branchId: number | null;
     }[]>;
     findAll(): Promise<{
-        status: string | null;
-        createdAt: Date;
-        branchId: number | null;
         id: number;
-        userId: number | null;
+        status: string | null;
         fullName: string | null;
+        createdAt: Date;
+        userId: number | null;
+        branchId: number | null;
     }[]>;
     delete(id: number): import(".prisma/client").Prisma.Prisma__BranchClient<{
-        cityId: number | null;
-        branch: string;
         id: number;
+        branch: string;
+        cityId: number | null;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

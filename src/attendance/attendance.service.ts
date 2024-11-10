@@ -15,7 +15,7 @@ export class AttendanceService {
             });
       }
 
-// Get All Branches
+// Get All Branches on the site
       async  findAll() {
         return this.prisma.attendance.findMany({
           
