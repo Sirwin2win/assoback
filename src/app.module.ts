@@ -12,10 +12,11 @@ import { CitiesModule } from './cities/cities.module';
 import { ComplaintsModule } from './complaints/complaints.module';
 import { ContributionsModule } from './contributions/contributions.module';
 import { MinutesModule } from './minutes/minutes.module';
+import { AttendanceModule } from './attendance/attendance.module';
 
 
 @Module({
-  imports: [ConfigModule.forRoot(), UsersModule, AuthModule, BranchesModule, CitiesModule, ComplaintsModule, ContributionsModule, MinutesModule,],
+  imports: [ConfigModule.forRoot(), UsersModule, AuthModule, BranchesModule, CitiesModule, ComplaintsModule, ContributionsModule, MinutesModule, AttendanceModule,],
   controllers: [AppController],
   providers: [AppService],
 
